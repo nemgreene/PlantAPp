@@ -1,77 +1,77 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
-const jwt_decode = require("jwt-decode");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const passport = require("passport");
 const app = express();
 const path = require("path");
 var cors = require("cors");
-const UserModel = require("./model/model");
 app.use(cors());
+require("dotenv").config();
 
-const dbRoute =
-  "mongodb+srv://NemGreene:toor@cluster0-1a7yh.mongodb.net/test?retryWrites=true&w=majority";
+const dbRoute = process.env.MONGODB_STRING;
 
-// connects our back end code with the database
-mongoose.connect(dbRoute, { useNewUrlParser: true, useUnifiedTopology: true });
-//connected?
-const connection = mongoose.connection;
-connection.once("open", function () {
-  console.log("MongoDB database connection established successfully");
-});
-mongoose.Promise = global.Promise;
+mongoose
+  .connect(dbRoute, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("MongoDB has been connected on port " + PORT))
+  .catch((err) => console.log(err));
 
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 require("./auth/auth");
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization, access-control-allow-origin, profilerefid(whatever header you need)"
+  );
+  next();
+});
 
 const routes = require("./routes/routes");
 const secureRoute = require("./routes/secure-routes");
 
+//Middleware that will verify the jwt token
 async function authenitcate(req, res, next) {
-  /*   console.log("JWT authenticating"); */
-  let authHeader = req.headers.cookie;
-
-  if (authHeader === undefined) {
-    authHeader = req.headers.authorization;
-    if (authHeader === undefined) {
-      console.log("cant find any headers");
-      return res.json("403");
-    }
+  const { accesstoken } = req.headers;
+  // verify accessToken exists
+  if (!accesstoken) {
+    const error = new Error("Missing Access Token");
+    res.status(404);
+    return next(error);
   }
-  let accessToken = authHeader && authHeader.split(" ")[1];
-  let refreshToken = authHeader && authHeader.split(" ")[2];
-  if (refreshToken === null || accessToken === null) {
-    return res.json("no access found");
-  }
-  refreshToken = refreshToken.slice(12, -2);
-  accessToken = accessToken.slice(12, -2);
 
-  jwt.verify(accessToken, "top_secret", (err, user) => {
+  // verify accessToken
+  jwt.verify(accesstoken, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
     if (err) {
-      console.log(err.name);
-      if (err.name === "TokenExpiredError") {
-        res.json("timeout error");
-      }
+      // if invalid, throw 498
+      const error = new Error("Invalid Token");
+      res.status(498);
+      return next(error);
     } else {
-      console.log("accessToken confirmed");
       next();
     }
   });
 }
+
 app.use("/", routes);
+app.use("/user", authenitcate, secureRoute);
 
-//We plugin our jwt strategy as a middleware so only verified users can access this route
-app.use("/user", /* authenitcate ,*/ secureRoute, async (req, res) => {
-  console.log("using authenticated route");
-});
-
-//Handle errors
-app.use(function (err, req, res, next) {
-  console.log("arrived at catchallerror ");
-  res.status(err.status || 500);
-  res.json({ error: "catchall error" });
+//Catchall handle errors
+app.use(function (error, req, res, next) {
+  res.send({ error: error.message });
+  res.on("finish", () => {
+    console.log(res.statusCode, error.message);
+  });
 });
 
 //Server static assets if in production

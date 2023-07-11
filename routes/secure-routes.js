@@ -3,113 +3,90 @@ const express = require("express");
 const router = express.Router();
 let Plant = require("../model/plantModel");
 
-//Let's say the route below is very sensitive and we want only authorized users to have access
-
-//Displays information tailored according to the logged in user
-router.get("/profile", (req, res, next) => {
-  //We'll just send back the user details and the token
-  res.json({
-    message: "You made it to the secure route",
-    user: req.user,
-    token: req.query,
-  });
-});
-
-router.get("/dash", (req, res, next) => {
-  //We'll just send back the user details and the token
-  res.json({
-    message: "You made it to the secure route",
-    user: req.user,
-    token: req.query,
-  });
-});
-
-router.get("/plants", function (req, res) {
-  Plant.find(function (err, plants) {
-    if (err) {
-      console.log("could not get any plants");
-    } else {
-      res.json(plants);
+// Get all plants by a user id
+router.get("/plants", async function (req, res) {
+  try {
+    const plants = await Plant.find({
+      userId: req.headers.userid,
+    });
+    if (plants) {
+      res.send(plants);
     }
-  });
+  } catch (err) {
+    res.status(err?.status || 404).send(err?.message || "No plants found");
+  }
 });
 
+// Get one plant by id (legacy)
 router.get("/plant", function (req, res) {
   Plant.findById(req.headers.id, function (err, plant) {
     if (err) {
-      console.log("could not get any plant");
+      res.status(err?.status || 404).send(err?.message || "No plant found");
     } else {
-      console.log(plant);
       res.json(plant);
     }
   });
 });
 
+// Add a plant to the db
 router.post("/plants/add", function (req, res) {
-  console.log("create new plant route");
-  console.log(req.body);
-  console.log("req.body");
-  let plant = new Plant(req.body);
+  let plant = new Plant({
+    ...req.body,
+    userId: req.headers.userid,
+  });
   plant
     .save()
-    .then(console.log(plant))
     .then((plant) => {
-      res.status(200).json({ plant: "plant added successfully" });
+      res.status(200).send({ plant: "Plant added successfully" });
     })
     .catch((err) => {
-      res.status(400).send("adding new plant failed");
+      res
+        .status(err?.status || 404)
+        .send(err?.message || "Could not add plant");
     });
 });
 
-//delete
-router.delete("/plants/delete", (req, res) => {
-  const { id } = req.body;
-  console.log(id);
-  Plant.findByIdAndDelete(id, (err) => {
-    if (err) return res.send(err);
-    return res.json({ success: true });
-  });
-});
-
-//water plant
-router.post("/plants/water", function (req, res) {
-  console.log("secure watering plants route");
-  console.log(req.body);
-  Plant.findByIdAndUpdate(
-    { _id: req.body.id },
-    { date_watered: req.body.date_watered },
-    function (err, plant) {
-      if (err) console.log("couldnt find plant");
-      else console.log("watered");
+//Delete a plant by id
+router.delete("/plants/delete", async (req, res) => {
+  const { _id } = req.body;
+  try {
+    let deleted = await Plant.deleteOne({ _id });
+    if (!(deleted.deletedCount > 0)) {
+      throw new Error("Cannot find plant with that id");
     }
-  );
+    res.status(200).send({ plant: "Plant Deleted" });
+  } catch (error) {
+    res.status(err?.status || 401).send(err?.message || "Error Deleting");
+  }
 });
 
-//edit
-router.post("/plants/update", function (req, res) {
-  console.log("edited route");
-  Plant.findById(req.body.id, function (err, plant) {
-    console.log(JSON.stringify(req.body));
-    if (!plant) res.status(404).send("data not found");
-    else
-      (plant.plant_description = req.body.plant_description),
-        (plant.water_amount = req.body.water_amount),
-        (plant.plant_priority = req.body.plant_priority),
-        (plant.plant_completed = req.body.plant_completed),
-        (plant.plant_img = req.body.plant_img),
-        (plant.date_watered = req.body.date_watered),
-        (plant.water_day = req.body.water_day),
-        (plant.water_frequency = req.body.water_frequency),
-        (plant.increment_frequency = req.body.increment_frequency),
-        plant
-          .save()
-          .then((plant) => {
-            res.json("plant updated");
-          })
-          .catch((err) => {
-            res.status(400).send("Update not possible");
-          });
-  });
+//Water a plant
+router.post("/plants/water", async (req, res) => {
+  const plant = await Plant.findByIdAndUpdate(
+    { _id: req.body._id },
+    { dateWatered: req.body.dateWatered }
+  );
+  if (plant) {
+    res.status(200).send({ plant: "Plant Updated" });
+  } else {
+    res.status(401).send({ plant: "Error Updating Plant" });
+  }
+});
+
+//Edit a plants details
+router.post("/plants/update", async function (req, res) {
+  try {
+    const plant = await Plant.updateOne({ _id: req.body._id }, req.body);
+    if (!plant.acknowledged) {
+      throw new Error("Cannot find plant with that id");
+    }
+    if (!(plant.modifiedCount > 0)) {
+      return res.status(304).send({ message: "No changes made" });
+    }
+    return res.status(200).send({ plant: "Plant Updated" });
+  } catch (err) {
+    res.status(err?.status || 401).send(err?.message || "Error Deleting");
+  }
 });
 
 module.exports = router;

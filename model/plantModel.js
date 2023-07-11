@@ -2,26 +2,29 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 let Plant = new Schema({
-  plant_description: {
+  plantDescription: {
     type: String,
+    required: true,
   },
-  water_amount: {
+  dateWatered: {
     type: String,
+    required: true,
   },
-  plant_priority: {
-    type: String,
-  },
-  plant_img: {
-    type: String,
-  },
-  date_watered: {
-    type: String,
-  },
-  water_frequency: {
+  waterFrequency: {
     type: Number,
+    required: true,
   },
-  increment_frequency: {
+  plantPriority: {
     type: Number,
+    required: true,
+  },
+  plantImage: {
+    type: mongoose.Mixed,
+    required: true,
+  },
+  userId: {
+    type: String,
+    required: true,
   },
 });
 
