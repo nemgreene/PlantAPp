@@ -2,7 +2,7 @@
   "name": "mernplant",
   "version": "1.0.0",
   "description": "",
-  "main": "server,js",
+  "main": "server.js",
   "engines": {
     "node": "12.16.x"
   },
@@ -13,6 +13,7 @@
     "client": "cd client && npm start",
     "auth": "nodemon authServer.js",
     "dev": "concurrently \"npm run client\" \"npm run server\"",
+    "devInstall": "concurrently --kill-others-on-fail \"cd client && npm install\" \"npm install\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "NemGreene",
