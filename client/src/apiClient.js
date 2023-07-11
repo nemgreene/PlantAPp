@@ -1,7 +1,7 @@
 import axios from "axios";
 import moment from "moment";
-const baseUrl = "http://localhost:4000";
-// const baseUrl = "";
+// const baseUrl = "http://localhost:5000";
+const baseUrl = "";
 
 export default class ApiClient {
   constructor(
@@ -64,6 +64,7 @@ export default class ApiClient {
         err.response?.staus || "404",
         err.response?.data.error || "Sorry something went wrong"
       );
+      this.logoutHandler();
       return {};
     }
   }
