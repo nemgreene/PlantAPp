@@ -38,7 +38,7 @@ export default function AddPlantModal({
   client,
   getPlants,
 }) {
-  const [plantDescription, setPlantDescription] = useState("Test Plant Insert");
+  const [plantDescription, setPlantDescription] = useState("");
   const [waterFrequency, setWaterFrequency] = useState(7);
   const [plantPriority, setPlantPriority] = useState(1);
   const [imgToggle, setImgToggle] = useState(false);
