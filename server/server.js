@@ -76,7 +76,6 @@ app.use(function (error, req, res, next) {
 
 //Server static assets if in production
 // Accessing the path module
-const path = require("path");
 
 // Step 1:
 app.use(express.static(path.resolve(__dirname, "../client/build")));
