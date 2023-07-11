@@ -1,40 +1,28 @@
 {
-  "name": "mernplant",
+  "name": "plantappv3",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
-  "engines": {
-    "node": "12.16.x"
-  },
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "server": "nodemon server.js",
+    "start": "cd server && node server.js",
+    "server": "cd server &&  nodemon server.js",
     "client": "cd client && npm start",
-    "auth": "nodemon authServer.js",
     "dev": "concurrently \"npm run client\" \"npm run server\"",
-    "devInstall": "concurrently --kill-others-on-fail \"cd client && npm install\" \"npm install\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "devInstall": "concurrently --kil l-others-on-fail \"cd client && npm install\" \"cd server && npm install\""
   },
-  "author": "NemGreene",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nemgreene/PlantApp.git"
+  },
+  "author": "",
   "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^4.0.1",
-    "body-parser": "^1.19.0",
-    "concurrently": "^5.2.0",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "express-sessions": "^1.0.6",
-    "jsonwebtoken": "^8.5.1",
-    "jwt-decode": "^2.2.0",
-    "mongoose": "^7.3.1",
-    "nodemon": "^2.0.22",
-    "passport": "^0.4.1",
-    "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0"
+  "bugs": {
+    "url": "https://github.com/nemgreene/PlantApp/issues"
   },
-  "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  "homepage": "https://github.com/nemgreene/PlantApp#readme",
+  "dependencies": {
+    "concurrently": "^8.2.0",
+    "nodemon": "^3.0.1"
   }
 }

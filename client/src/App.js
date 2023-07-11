@@ -51,7 +51,7 @@ function App() {
     localStorage.removeItem("user_id");
   };
 
-  const modalHandler = (status, message) => {
+  const modalHandler = (status, message, config = undefined) => {
     if (status < 300) {
       toast.success(message, { ...toastrConfig });
     } else if (status >= 300 && status < 400) {
