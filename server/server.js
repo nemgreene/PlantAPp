@@ -9,6 +9,7 @@ app.use(cors());
 require("dotenv").config();
 
 const dbRoute = process.env.MONGODB_STRING;
+const PORT = process.env.PORT || 5000;
 
 mongoose
   .connect(dbRoute, {
