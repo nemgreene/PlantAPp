@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd server && node server.js",
-    "server": "cd server &&  nodemon server.js",
+    "start": "nodemon server.js",
+    "server": "nodemon server.js",
     "client": "cd client && npm start",
     "dev": "concurrently \"npm run client\" \"npm run server\"",
     "devInstall": "concurrently --kil l-others-on-fail \"cd client && npm install\" \"cd server && npm install\""
