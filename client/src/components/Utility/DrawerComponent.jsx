@@ -26,6 +26,8 @@ export default function DrawerComponent({
         "& .MuiDrawer-paper": {
           width: appWidth,
           boxSizing: "border-box",
+          backgroundColor: "#afd1a3",
+          borderColor: "#2e7d32",
         },
       }}
       variant="permanent"
@@ -46,7 +48,13 @@ export default function DrawerComponent({
           </ListItemText>
         </ListItem>
       </List>
-      <Divider>
+      <Divider
+        sx={{
+          "&::before, &::after": {
+            borderColor: "#2e7d32",
+          },
+        }}
+      >
         <Tooltip title={sortFunc.tooltip}>
           <Chip
             label={sortFunc.tooltip}

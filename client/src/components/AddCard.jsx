@@ -11,7 +11,13 @@ function AddCard({ plant, client }) {
   const handleClose = () => setOpen(false);
 
   return (
-    <Card style={{ height: "100%", minHeight: "250px" }}>
+    <Card
+      style={{
+        height: "100%",
+        minHeight: "250px",
+      }}
+      className="greenBorder greenBackground"
+    >
       <Card.Body
         style={{
           display: "flex",

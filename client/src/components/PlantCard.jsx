@@ -35,8 +35,24 @@ function PlantCard({ plant, client, toggleDate, setToggleDate, setEditPlant }) {
   }, [plant]);
 
   return (
-    <Card className="h-100">
-      <Card.Img variant="top" src={plant.plantImage} />
+    <Card
+      className="h-100"
+      style={{
+        backgroundColor: "#afd1a3",
+        borderColor: "#2e7d32",
+      }}
+    >
+      <Card.Img
+        variant="top"
+        src={plant.plantImage}
+        style={{
+          marginLeft: "3%",
+          marginTop: "3%",
+          width: "94%",
+          borderRadius: "5px",
+          overflow: "hidden",
+        }}
+      />
       <Card.Body>
         <Card.Title>
           <Typography variant="h6" sx={{ textAlign: "center" }}>

@@ -50,7 +50,7 @@ export default function Dashboard({ client }) {
   }, [editPlant]);
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", backgroundColor: "#afd1a3" }}>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -75,6 +75,7 @@ export default function Dashboard({ client }) {
           flexGrow: 1,
           p: 3,
           ml: appWidth,
+          backgroundColor: "#afd1a3",
         }}
       >
         <SpeedDialComponent sortObj={sortObj} setSortFunc={setSortFunc} />

@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 
 function NavBar({ client }) {
   return (
-    <Navbar className="bg-body-tertiary">
+    <Navbar className="greenBackground">
       <Container>
         <Navbar.Brand>Plant App</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

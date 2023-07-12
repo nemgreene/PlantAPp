@@ -5,9 +5,10 @@ import ApiClient from "./apiClient";
 import Dashboard from "./components/Dashboard";
 import LoginComponent from "./components/public/LoginComponent";
 
-import "bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";
-import "./index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+
 import RegisterCard from "./components/public/RegisterCard";
 
 let toastrConfig = {
