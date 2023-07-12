@@ -5,11 +5,12 @@ const bodyParser = require("body-parser");
 const app = express();
 const path = require("path");
 var cors = require("cors");
-app.use(cors());
 require("dotenv").config();
 
+app.use(cors());
+
 const dbRoute = process.env.MONGODB_STRING;
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 
 mongoose
   .connect(dbRoute, {
