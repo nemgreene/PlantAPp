@@ -19,6 +19,8 @@ const style = {
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
+  borderColor: "#2e7d32",
+  borderRadius: "5px",
 };
 
 export default function EditModal({ plant, open, handleClose, client }) {
