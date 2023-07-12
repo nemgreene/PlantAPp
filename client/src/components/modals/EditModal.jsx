@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import { Slider } from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -85,18 +86,18 @@ export default function EditModal({ plant, open, handleClose, client }) {
             />
             <Form.Label>
               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                {waterFrequency === "1"
+                {waterFrequency === 1
                   ? "Water Every Day"
                   : `Water Every ${waterFrequency} Days:`}
               </Typography>
             </Form.Label>
-            <Form.Range
+            <Slider
               max={30}
               min={1}
               value={waterFrequency}
               onChange={changeRange}
               variant="success"
-            />
+            ></Slider>
           </Form.Group>
           <InputGroup className="mb-3">
             <Tooltip title="Highest priority plants displayed first">

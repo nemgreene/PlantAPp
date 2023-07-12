@@ -7,6 +7,7 @@ import FormGroup from "@mui/material/FormGroup";
 import Typography from "@mui/material/Typography";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import { Slider } from "@mui/material";
 
 const stockImages = [
   "https://www.shutterstock.com/image-illustration/3d-illustration-banana-tree-pot-600w-2114190923.jpg",
@@ -108,13 +109,13 @@ export default function AddPlantModal({
                   : `Water Every ${waterFrequency} Days:`}
               </Typography>
             </Form.Label>
-            <Form.Range
-              min={1}
+            <Slider
               max={30}
+              min={1}
               value={waterFrequency}
               onChange={changeRange}
               variant="success"
-            />
+            ></Slider>
           </Form.Group>
           <InputGroup className="mb-3">
             <Tooltip title="Highest priority plants displayed first">
