@@ -103,7 +103,7 @@ export default function AddPlantModal({
             />
             <Form.Label>
               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                {waterFrequency === 1
+                {waterFrequency === "1"
                   ? "Water Every Day"
                   : `Water Every ${waterFrequency} Days:`}
               </Typography>
