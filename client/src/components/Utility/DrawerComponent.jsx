@@ -33,15 +33,13 @@ export default function DrawerComponent({
       variant="permanent"
       anchor="left"
     >
-      <Divider />
-      <List>
-        <ListItem>
+      <List sx={{ p: 0, height: "13vh" }}>
+        <ListItem sx={{ p: 0, pt: "2vh", height: "100%" }}>
           <ListItemText
             sx={{
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              mt: 2,
             }}
           >
             <h4> 🏊 Watering Due 🏊</h4>
@@ -50,6 +48,10 @@ export default function DrawerComponent({
       </List>
       <Divider
         sx={{
+          height: "4vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
           "&::before, &::after": {
             borderColor: "#2e7d32",
           },
