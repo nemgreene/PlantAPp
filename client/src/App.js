@@ -106,7 +106,8 @@ function App() {
     } else {
       navigate("/login");
     }
-  }, [navigate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="appContainer">
