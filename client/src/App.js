@@ -113,8 +113,7 @@ function App() {
     <div className="appContainer">
       <ToastContainer
         style={{
-          marginTop:
-            useLocation().pathname === "/login" ? "0vh" : `${navHeight}vh`,
+          marginTop: useLocation().pathname === "/" ? `${navHeight}vh` : "0vh",
         }}
         position="top-right"
         autoClose={500}

@@ -31,9 +31,15 @@ export default function RegisterCard({ client }) {
         flaggedObj.msg = "Please fill out all the forms";
       }
     });
-    setFlagged(flaggedObj);
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    if (!emailRegex.test(formValues.email)) {
+      flaggedObj.msg = "Please enter a valid email address";
+    }
     if (Object.keys(flaggedObj).length === 0) {
+      setFlagged({});
       client.register(formValues);
+    } else {
+      setFlagged(flaggedObj);
     }
   };
 
@@ -41,7 +47,7 @@ export default function RegisterCard({ client }) {
     if (flagged.msg) {
       client.modalHandler(400, flagged.msg);
     }
-  }, [flagged.msg, client]);
+  }, [flagged, client]);
   return (
     <Box>
       <Grid
