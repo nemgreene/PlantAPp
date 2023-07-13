@@ -2,6 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 let Plant = require("../model/plantModel");
+let User = require("../model/model");
 
 // Get all plants by a user id
 router.get("/plants", async function (req, res) {
@@ -11,6 +12,21 @@ router.get("/plants", async function (req, res) {
     });
     if (plants) {
       res.send(plants);
+    }
+  } catch (err) {
+    res.status(err?.status || 404).send(err?.message || "No plants found");
+  }
+});
+
+// Get all plants and all users for some statistics
+router.get("/overview", async function (req, res) {
+  try {
+    const plants = await Plant.find({});
+    const users = await User.find({});
+    if (plants && users) {
+      res.send({ plants, users });
+    } else {
+      res.send({});
     }
   } catch (err) {
     res.status(err?.status || 404).send(err?.message || "No plants found");
