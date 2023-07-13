@@ -58,7 +58,7 @@ export default function Dashboard({ client }) {
           width: drawerWidth,
           ml: appWidth,
           backgroundColor: "#afd1a3",
-          height: "15vh",
+          height: "calc(15vh - 1px)",
           display: "flex",
           justifyContent: "center",
         }}
@@ -76,10 +76,10 @@ export default function Dashboard({ client }) {
       <Box
         component="main"
         sx={{
-          mt: "5vh",
+          mt: "8vh",
+          p: 3,
           minHeight: "95vh",
           flexGrow: 1,
-          p: 3,
           ml: appWidth,
           backgroundColor: "#afd1a3",
 
