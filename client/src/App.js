@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  Navigate,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import ApiClient from "./apiClient";
 import Dashboard from "./components/Dashboard";
@@ -104,6 +110,9 @@ function App() {
   return (
     <div className="appContainer">
       <ToastContainer
+        style={{
+          marginTop: useLocation().pathname === "/login" ? "0vh" : "15vh",
+        }}
         position="top-right"
         autoClose={500}
         hideProgressBar={false}

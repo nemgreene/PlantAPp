@@ -9,7 +9,7 @@ import { Chip, Tooltip } from "@mui/material";
 import Sidebar from "./Sidebar";
 import PlantCard from "../PlantCard";
 
-import { appWidth } from "./Utility";
+import { appWidth, navHeight } from "./Utility";
 
 export default function DrawerComponent({
   sortFunc,
@@ -33,7 +33,7 @@ export default function DrawerComponent({
       variant="permanent"
       anchor="left"
     >
-      <List sx={{ p: 0, height: "13vh" }}>
+      <List sx={{ p: 0, height: `calc(${navHeight - 2}vh + 1px)` }}>
         <ListItem sx={{ p: 0, pt: "2vh", height: "100%" }}>
           <ListItemText
             sx={{
@@ -48,7 +48,7 @@ export default function DrawerComponent({
       </List>
       <Divider
         sx={{
-          height: "4vh",
+          height: "calc(4vh)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",

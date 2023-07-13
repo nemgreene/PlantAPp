@@ -90,3 +90,5 @@ export const drawerWidth = {
   md: `calc(100% - ${med})`,
   lg: `calc(100% - ${large})`,
 };
+
+export const navHeight = 10;

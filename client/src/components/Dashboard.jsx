@@ -5,7 +5,7 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import CssBaseline from "@mui/material/CssBaseline";
 
-import { sortObj, appWidth, drawerWidth } from "./Utility/Utility";
+import { sortObj, appWidth, drawerWidth, navHeight } from "./Utility/Utility";
 import EditModal from "./modals/EditModal";
 
 import PlantCard from "./PlantCard";
@@ -14,7 +14,7 @@ import NavBar from "./Utility/NavBar";
 import DrawerComponent from "./Utility/DrawerComponent";
 import SpeedDialComponent from "./Utility/SpeedDialComponent";
 
-export default function Dashboard({ client }) {
+export default function Dashboard({ client, children }) {
   const [plants, setPlants] = useState([]);
   const [toggleDate, setToggleDate] = useState(false);
   const [sortFunc, setSortFunc] = useState(sortObj.wateringDesc);
@@ -58,7 +58,7 @@ export default function Dashboard({ client }) {
           width: drawerWidth,
           ml: appWidth,
           backgroundColor: "#afd1a3",
-          height: "calc(15vh - 1px)",
+          height: `calc(${navHeight}vh - 1px)`,
           display: "flex",
           justifyContent: "center",
         }}
@@ -76,7 +76,7 @@ export default function Dashboard({ client }) {
       <Box
         component="main"
         sx={{
-          mt: "8vh",
+          mt: `${navHeight}vh`,
           p: 3,
           minHeight: "95vh",
           flexGrow: 1,
@@ -88,7 +88,6 @@ export default function Dashboard({ client }) {
         }}
       >
         <SpeedDialComponent sortObj={sortObj} setSortFunc={setSortFunc} />
-        <Toolbar />
         <EditModal
           handleClose={handleClose}
           open={open}

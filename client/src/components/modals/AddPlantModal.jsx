@@ -35,12 +35,7 @@ const style = {
   borderRadius: "5px",
 };
 
-export default function AddPlantModal({
-  open,
-  handleClose,
-  client,
-  getPlants,
-}) {
+export default function AddPlantModal({ open, handleClose, client }) {
   const [plantDescription, setPlantDescription] = useState("");
   const [waterFrequency, setWaterFrequency] = useState(7);
   const [plantPriority, setPlantPriority] = useState(1);
