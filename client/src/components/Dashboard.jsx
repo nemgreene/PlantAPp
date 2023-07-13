@@ -61,6 +61,7 @@ export default function Dashboard({ client, children }) {
           height: `calc(${navHeight}vh - 1px)`,
           display: "flex",
           justifyContent: "center",
+          boxShadow: "none",
         }}
       >
         <NavBar client={client} />

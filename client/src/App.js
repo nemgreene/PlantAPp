@@ -16,6 +16,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 import RegisterCard from "./components/public/RegisterCard";
+import { navHeight } from "./components/Utility/Utility";
 
 let toastrConfig = {
   position: "top-right",
@@ -111,7 +112,8 @@ function App() {
     <div className="appContainer">
       <ToastContainer
         style={{
-          marginTop: useLocation().pathname === "/login" ? "0vh" : "15vh",
+          marginTop:
+            useLocation().pathname === "/login" ? "0vh" : `${navHeight}vh`,
         }}
         position="top-right"
         autoClose={500}
