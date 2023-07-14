@@ -92,7 +92,7 @@ The function should return a normalized state object according to the following 
   },
 }
 
-    All lists should be ordered based off the dateWatered key, and the order of object keys should reflect that.
+    All plant lists should be ordered based off the dateWatered key, and the order of object keys should reflect that.
 
  ---Users
 

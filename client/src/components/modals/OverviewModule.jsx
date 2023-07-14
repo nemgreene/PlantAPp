@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import FormGroup from "@mui/material/FormGroup";
 import Typography from "@mui/material/Typography";
+import { normalizeOverview } from "./normalizeOverview";
 
 const style = {
   position: "absolute",
@@ -23,13 +24,12 @@ const style = {
 export default function OverviewModule({ open, handleClose, client }) {
   const fetchAndNormalize = async () => {
     const res = await client.getOverview();
-    console.log(res);
-    return;
-    const { plants, users } = res.data;
-
-    // Review ./OverviewModuleBrief
-
-    // Your code here
+    if (res.data) {
+      const { users, plants } = res.data;
+      // Review ./OverviewModuleBrief
+      // Implement in ./normalizeOverview.js
+      const normalized = normalizeOverview(users, plants);
+    }
   };
 
   useEffect(() => {
