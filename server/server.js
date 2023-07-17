@@ -2,11 +2,11 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const app = express();
 const path = require("path");
 var cors = require("cors");
 require("dotenv").config();
 
+const app = express();
 app.use(cors());
 
 const dbRoute = process.env.MONGODB_STRING;
@@ -25,9 +25,8 @@ app.use(
     extended: true,
   })
 );
-require("./auth/auth");
-
 app.use(bodyParser.json());
+require("./auth/auth");
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
