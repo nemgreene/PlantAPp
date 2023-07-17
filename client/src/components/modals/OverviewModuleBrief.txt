@@ -1,0 +1,187 @@
+In web application development, managing state is crucial, especially when dealing with complex data structures. In this, you'll be tasked with normalizing the state of our application, specifically focusing on users statistics.
+
+The input data represents the plants associated with the user. Your goal is to transform this data into a normalized state object, following the principles of database design.
+
+
+The input data looks like these responses from our server:
+Plants:
+[
+    {
+        __v: 0
+        _id: "64ad8b62b27f6b7c85f84e03"
+        dateWatered: "2023-07-11T17:06:52.978Z"
+        plantDescription: "Monstera Deliciosa"
+        plantImage: "https://www.shutterstock.com/image-illustration/3d-digital-render-monstera-isolated-600w-1558648628.jpg"
+        plantPriority: 0
+        userId: "64abe8648ae164ce60b83011"
+        waterFrequency: 11
+    },
+    {...}
+]
+Users:
+[
+    {
+        __v: 0
+        _id: "64abe5a97b6325aa57441a98"
+        email: "admin@admin"
+        password: "$2b$10$mUxdl1DmsplcDvaGhVar/OTwv2y5qVoLElqS9yGi4kq8SPwBlpmnG"
+    },
+    {...}
+]
+
+
+Output
+
+The function should return a normalized state object according to the following schema:
+
+{
+  entities: {
+    users: {
+      byId: {
+        [userId: String]: {
+          email: String,
+        },
+      },
+      allIds: [userId: String],
+    },
+    plants: {
+      byId: {
+        [plantId: String]: {
+            __v: Number
+            _id: String
+            dateWatered: Date/Moment
+            plantDescription: String
+            plantImage: String
+            plantPriority: Number
+            userId: String
+            waterFrequency: Number
+        },
+      },
+      allIds: [plantId: String],
+    },
+    wateredDate: {
+      [plantId: String]: {
+            __v: Number
+            _id: String
+            dateWatered: Date/Moment
+            plantDescription: String
+            plantImage: String
+            plantPriority: Number
+            userId: String
+            waterFrequency: Number
+        },
+      allDates: [plantId: String],
+    },
+    userPlants: {
+        byId: {
+            [userId: String]: [
+                {
+                    __v: Number
+                    _id: String
+                    dateWatered: Date/Moment
+                    plantDescription: String
+                    plantImage: String
+                    plantPriority: Number
+                    userId: String
+                    waterFrequency: Number
+                },
+            ],
+        },
+      allIds: [userId: String],
+    },
+  },
+}
+
+    All plant lists should be ordered based off the dateWatered key, and the order of object keys should reflect that.
+
+    Plant/User ids should be unique, if dusplicates are present, upsert with the newest information
+
+ ---Users
+
+    The users object represents all users in the db.
+
+ ---Plants
+
+    Each plant should be represented as an object in the plants object, using the plant's id as the key. Each plant object should have all of the data should be present from the plant.
+
+    The userId property in the post object should be a string representing the author's username, and the rest of the data should be present from the plant
+
+    Additionally, if a plant is associated with a user not present, it should be filtered out
+
+ ---Watered date
+
+    Each plant should be represented as an object in the wateredDate object, using the plant id as the key. Each plant object should all the plant data.
+
+
+ ---UserPlants
+
+    The userPlants object should represent the relationship between user and plants. The userPlants object has two properties:
+
+    byId: An object where each key is an author's username and the corresponding value is an array of plant IDs authored by that user.
+
+    allIds: An array containing all the emails of users.
+
+    The arllIds arays in each object should contain the IDs of the respective entities in the same order as they appear, ordered from least recently watered to most.
+
+
+Example output
+{
+  entities: {
+    users: {
+      byId: {
+        user1: { email: "User2@gmail.com", ...rest },
+        user2: { email: "User3@gmail.com", ...rest },
+        user3: { email: "User1@gmail.com", ...rest },
+      },
+      allIds: ["user2", "user3", "user1"],
+    },
+    plants: {
+      byId: {
+        plant2: {
+          _id: "plant2",
+          userId: "user2",
+          ...rest,
+        },
+        plant3: {
+          _id: "plant3",
+          userId: "user3",
+          ...rest,
+        },
+        plant1: {
+          _id: "plant1",
+          userId: "user1",
+          ...rest,
+        },
+      },
+      allIds: ["plant2", "plant3", "plant1"],
+    },
+    wateredDate: {
+      byId: {
+        plant2: {
+          _id: "plant2",
+          userId: "user2",
+          ...rest,
+        },
+        plant3: {
+          _id: "plant3",
+          userId: "user3",
+          ...rest,
+        },
+        plant1: {
+          _id: "plant1",
+          userId: "user1",
+          ...rest,
+        },
+      },
+      allDates: ["date2", "date3", "date1"],
+    },
+    userPlants: {
+      byId: {
+        user2: ["plant2", ...{plants}],
+        user3: ["plant3", ...{plants}],
+        user1: ["plant1", ...{plants}],
+      },
+      allIds: ["user2", "user3", "user1"],
+    },
+  },
+}

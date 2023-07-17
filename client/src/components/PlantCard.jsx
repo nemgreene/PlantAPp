@@ -40,7 +40,7 @@ function PlantCard({ plant, client, toggleDate, setToggleDate, setEditPlant }) {
       style={{
         backgroundColor: "#afd1a3",
         borderColor: "#2e7d32",
-        padding: "3% 5%",
+        padding: "10px",
       }}
     >
       <div

@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cd client && npm run test",
     "start": "cd server && nodemon server.js",
     "server": " cd server && nodemon server.js",
     "client": "cd client && npm start",
     "dev": "concurrently \"npm run client\" \"npm run server\"",
-    "devInstall": "concurrently --kil l-others-on-fail \"cd client && npm install\" \"cd server && npm install\""
+    "devInstall": "concurrently --kil l-others-on-fail \"cd client && npm install\" \"cd server && npm install\"",
+    "devTests": "cd ./client/src/components/modals && nodemon normalizeOverview.tests.js"
   },
   "repository": {
     "type": "git",

@@ -57,6 +57,7 @@ export default class ApiClient {
     } catch (err) {
       // if 498, access token has expired, throw error to be handled in authenticatedApi call
       if (err?.response?.status === 498) {
+        console.log("Token Expired, refreshing credentials");
         throw new Error("498");
       }
       // else alery user to error
@@ -203,6 +204,9 @@ export default class ApiClient {
     } else {
       return {};
     }
+  }
+  async getOverview() {
+    return await this.authenticatedCall("get", "/overview");
   }
   async addPlant(plant) {
     return await this.authenticatedCall(

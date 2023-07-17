@@ -65,7 +65,8 @@ export default function AddPlantModal({ open, handleClose, client }) {
         ? plantImage
         : stockImages[Math.floor(Math.random() * stockImages.length)],
     };
-    const res = await client.addPlant(newPlant);
+    // const res = await client.addPlant(newPlant);
+    const res = await client.addAlertPlant(newPlant);
     if (res.status === 200) {
       closeModal();
     }

@@ -66,7 +66,8 @@ async function authenitcate(req, res, next) {
 }
 
 app.use("/", routes);
-app.use("/user", authenitcate, secureRoute);
+// app.use("/user", authenitcate, secureRoute);
+app.use("/user", secureRoute);
 
 //Catchall handle errors
 app.use(function (error, req, res, next) {
