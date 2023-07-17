@@ -33,7 +33,13 @@ export default function DrawerComponent({
       variant="permanent"
       anchor="left"
     >
-      <List sx={{ p: 0, height: `calc(${navHeight - 2}vh + 1px)` }}>
+      <List
+        sx={{
+          p: 0,
+          height: `calc(${navHeight - 2}vh + 1px)`,
+          minHeight: `calc(${navHeight - 2}vh + 1px)`,
+        }}
+      >
         <ListItem sx={{ p: 0, pt: "2vh", height: "100%" }}>
           <ListItemText
             sx={{
