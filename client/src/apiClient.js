@@ -1,7 +1,7 @@
 import axios from "axios";
 import moment from "moment";
-// const baseUrl = "http://localhost:4000";
-const baseUrl = "";
+const baseUrl = "http://localhost:4000";
+// const baseUrl = "";
 
 export default class ApiClient {
   constructor(
@@ -168,8 +168,16 @@ export default class ApiClient {
           password,
         },
       },
-      "Logged In!",
-      undefined
+      undefined,
+      (res) => {
+        if (res.data) {
+          console.log(res.data);
+          const { accessToken, refreshToken, _id } = res.data;
+          this.credentialsManager(accessToken, refreshToken, _id);
+          this.modalHandler(200, `Welcome ${email}`);
+          this.redirect("/");
+        }
+      }
     );
   }
 
