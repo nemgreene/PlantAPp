@@ -77,7 +77,7 @@ export default class ApiClient {
     const { accessToken, refreshToken, _id } = this.credentialsProvider();
     if (!accessToken || !refreshToken || !_id) {
       this.redirect("/login");
-      return { message: "Missing Credentials" };
+      return { message: "Missing Credentials at frontend" };
     }
     try {
       // send along the base request with escalated credentials
@@ -184,15 +184,18 @@ export default class ApiClient {
         const { email, password } = res.data;
         // log in with the credentials
         const userCredentials = await this.apiCall("post", `/login`, {
-          email,
-          password,
+          data: { email, password },
         });
         // extract token credentials
-        const { accessToken, refreshToken, _id } = userCredentials.data;
-        // elevate to
-        this.credentialsManager(accessToken, refreshToken, _id);
-        this.modalHandler(200, `Welcome ${email}`);
-        this.redirect("/");
+        if (userCredentials.data.accessToken) {
+          const { accessToken, refreshToken, _id } = userCredentials?.data;
+          // elevate to
+          this.credentialsManager(accessToken, refreshToken, _id);
+          this.modalHandler(200, `Welcome ${email}`);
+          this.redirect("/");
+        } else {
+          this.redirect("/login");
+        }
       }
     );
   }
