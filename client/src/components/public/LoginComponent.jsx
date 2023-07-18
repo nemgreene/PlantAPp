@@ -135,10 +135,11 @@ export default function RegisterCard({ client }) {
         flaggedObj.msg = "Please fill out all the forms";
       }
     });
+    console.log(flaggedObj);
     if (Object.keys(flaggedObj).length === 0) {
       setFlagged({});
       client.login(formValues);
-      setFormValues({});
+      setFormValues({ password: null });
     } else {
       setFlagged(flaggedObj);
     }
@@ -190,7 +191,8 @@ export default function RegisterCard({ client }) {
                 label="Password"
                 name="password"
                 error={flagged.password}
-                type="password"
+                // type="password"
+                value={formValues.password || ""}
               />
 
               <CardActions sx={{ pl: 0, pr: 0 }}>
