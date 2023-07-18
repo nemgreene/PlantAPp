@@ -36,8 +36,8 @@ export default function DrawerComponent({
       <List
         sx={{
           p: 0,
-          height: `calc(${navHeight - 2}vh + 1px)`,
-          minHeight: `calc(${navHeight - 2}vh + 1px)`,
+          height: `calc(${navHeight - 2}vh )`,
+          minHeight: `calc(${navHeight - 2}vh )`,
         }}
       >
         <ListItem sx={{ p: 0, pt: "2vh", height: "100%" }}>

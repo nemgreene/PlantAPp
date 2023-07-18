@@ -61,6 +61,7 @@ export default function Dashboard({ client, children }) {
           display: "flex",
           justifyContent: "center",
           boxShadow: "none",
+          outline: "solid 1px #2e7d32",
         }}
       >
         <NavBar client={client} />
