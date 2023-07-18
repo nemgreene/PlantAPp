@@ -191,7 +191,7 @@ export default function RegisterCard({ client }) {
                 label="Password"
                 name="password"
                 error={flagged.password}
-                // type="password"
+                type="password"
                 value={formValues.password || ""}
               />
 
