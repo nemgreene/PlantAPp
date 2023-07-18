@@ -31,6 +31,7 @@ export default class ApiClient {
     callback = undefined
   ) {
     try {
+      console.log("Base Url:", baseUrl);
       // try to make the request
       const res = await axios({
         method,
