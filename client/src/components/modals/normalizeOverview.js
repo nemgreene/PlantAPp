@@ -3,4 +3,6 @@ const normalizeOverview = (usersArr = [], plantsArr = []) => {
   return {};
 };
 
+// Testing Lib included in ../Tests that will be run against this function
+// run "run npm run test" to run the tests before submission
 module.exports = normalizeOverview;

@@ -70,7 +70,7 @@ The function should return a normalized state object according to the following 
             userId: String
             waterFrequency: Number
         },
-      allIds: [plantId: String],
+      allDates: [plantId: String],
     },
     userPlants: {
         byId: {
@@ -106,7 +106,7 @@ The function should return a normalized state object according to the following 
 
  ---Watered date
 
-    Each plant should be represented as an object in the wateredDate object, using the plant id as the key. Each plant object should all the plant data.
+    Each plant should be represented as an object in the wateredDate object, using the plant id as the key. Each plant object should have all all the plant data.
 
 
  ---UserPlants
@@ -125,9 +125,9 @@ Example output
   entities: {
     users: {
       byId: {
-        user1: { email: "User2@gmail.com" },
-        user2: { email: "User3@gmail.com" },
-        user3: { email: "User1@gmail.com" },
+        user1: { email: "User2@gmail.com", ...rest },
+        user2: { email: "User3@gmail.com", ...rest },
+        user3: { email: "User1@gmail.com", ...rest },
       },
       allIds: ["user2", "user3", "user1"],
     },
@@ -169,7 +169,7 @@ Example output
           ...rest,
         },
       },
-      allIds: ["plant2", "plant3", "plant1"],
+      allDates: ["plant2dateWatered", "plant3dateWatered", "plant1dateWatered"],
     },
     userPlants: {
       byId: {
