@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
@@ -109,6 +110,11 @@ export default function RegisterCard({ client }) {
                   Submit
                 </Button>
               </CardActions>
+              <Typography sx={{ ml: 1, mt: 1 }} variant="p" component="h5">
+                <span>
+                  Already a member? <Link to="/login">Login</Link>
+                </span>
+              </Typography>
             </CardContent>
           </Card>
         </Grid>
