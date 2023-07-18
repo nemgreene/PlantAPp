@@ -1,0 +1,158 @@
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/ff06e94a-1f5d-4dcf-be22-849709c97468)
+
+Error notification is not triggered after initial invalid submit 
+Tags [ "Good for newcomers", "Solved" ]
+
+---------------------------------------------
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/9a786977-fb2b-40bf-86b4-7a8845fa8b5c)
+
+Add rounded corners to image and 5% padding 
+Tags [ "Good for newcomers", "Solved" ]
+
+---------------------------------------------
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/20b388e6-6ddb-40d4-9b72-cc497e8a0457)
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/217bb198-9bc9-4aea-80e2-2aafc5abb3b3)
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/0cef3d7b-f0a2-47c5-9451-fcfa7cb2715e)
+
+Update some of the colors on the app:
+
+Background colors across the app should be #afd1a3
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/072d6833-c542-4cb7-afa1-70fe6e5ee53b)
+
+Add/Plant card border should match the color of the buttons
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/174c5801-16c1-4066-aab6-43c431005d35)
+
+As should Divider and Borders
+
+Tags [ "Good for newcomers", "Solved" ]
+
+---------------------------------------------
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/33e9c197-6429-496b-bf3a-280b30959746)
+
+On alert, the Logout button is covered. 
+
+Move the notifications to be inside the aperture of the Plant list component under the Navbar 
+Tags [ "Medium Difficulty", "Solved" ]
+
+---------------------------------------------
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/742d1d87-8560-4b2b-85a5-3001bf731686)
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/12485d51-9428-49c5-b731-e16412ae9699)
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/22932500-5d79-406a-b70a-21dbc5cb320d)
+
+On registering new users, we get a stack of errors 
+Tags [ "Advanced Functionality", "Solved" ]
+
+---------------------------------------------
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/ab0377db-b764-4154-ae5f-17aa9ce43b26)
+
+Must validate email on submission 
+Tags [ "Medium Difficulty", "Solved" ]
+
+---------------------------------------------
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/9e5171f9-5580-4eaf-90bc-ff75d3198e88)
+
+Register button currently does not redirect to Register Component 
+Tags [ "Medium Difficulty", "Solved" ]
+
+---------------------------------------------
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/d287bdbe-0ad5-4038-820c-14a2af3917be)
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/02d47aa7-4e29-4725-a367-fd5f17c48db3)
+
+Login component is written as a Class component, convert to Functional Component
+
+Linked to #10  
+Tags [ "Medium Difficulty", "Solved" ]
+
+---------------------------------------------
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/ee982fe9-46b8-4787-83ba-6cb3ffd8c63e)
+
+Login component styling is inconsistent with the styling in the rest of the app
+
+Currently styled using Bootstrap, convert to Material UI
+
+Linked to #11  
+Tags [ "Medium Difficulty", "Solved" ]
+
+---------------------------------------------
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/501b0465-859d-4f58-a2c0-ff0fdf457241)
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/0b26063f-fde2-45ab-97e2-fe1f54060c2c)
+
+Add/Edit Modal should have rounded corners, and outlined in green instead of black 
+Tags [ "Good for newcomers", "Solved" ]
+
+---------------------------------------------
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/97e4e0d8-1843-41d0-8233-c7cb9dc443ae)
+
+Should say "Every Day" when range is at 1
+
+Should say "Every $(n) Days: " when range is greater then 1 
+Tags [ "Good for newcomers", "Solved" ]
+
+---------------------------------------------
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/8946e596-e5d1-4ce1-bd82-7134ef775be5)
+
+ Water frequency range is the wrong color, should corroborate color scheme with the rest of the inputs 
+Tags [ "Good for newcomers", "Solved" ]
+
+---------------------------------------------
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/d4e578dd-4958-45b7-b18f-798c6848a281)
+
+Layout was forced before the page was fully loaded. If stylesheets are not yet loaded this may cause a flash of unstyled content. 
+Tags [ "Advanced Functionality" ]
+
+---------------------------------------------
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/2e76023d-cf3f-47ac-a231-72a802011284)
+
+Navbar height and sidebar header height should match size
+
+Decrease sidebar header/Increase Navbar height to meet in the middle 
+Tags [ "Good for newcomers", "Solved" ]
+
+---------------------------------------------
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/4da88aaa-74ec-40b8-919a-61ca08bdc4ce)
+
+At 1279 px width, header breaks onto 2 lines 
+Tags [ "Good for newcomers", "Solved" ]
+
+---------------------------------------------
+
+Complete the Overview Component. Find the brief client/src/components/modals
+
+ Tags [ "Advanced Functionality", "Solved" ]
+
+---------------------------------------------
+
+![image](https://github.com/InstructorGreene/PlantAppTechTest/assets/105919110/f175e6c3-4f19-4f91-8eef-4c1a9f4f06ab)
+
+
+
+Adding a landscape image causes card button to be out of line with the other buttons 
+Tags [ "Good for newcomers", "Solved" ]
+
+---------------------------------------------
+
+
+​
+

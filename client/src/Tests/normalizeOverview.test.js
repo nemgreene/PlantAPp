@@ -78,8 +78,6 @@ const testPlants1 = [
 const payload = normalizeOverview(testUsers1, testPlants1);
 const { users, plants, wateredDate, userPlants } = payload.entities;
 
-// console.log(plants);
-
 test("Expect all [allIds]/[allDates] to be type array", () => {
   expect(Array.isArray(users.allIds)).toBe(true);
   expect(Array.isArray(plants.allIds)).toBe(true);

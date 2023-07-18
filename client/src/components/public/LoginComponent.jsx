@@ -168,6 +168,7 @@ export default function RegisterCard({ client }) {
               <TextField
                 onFocus={handleFocus}
                 onChange={handleChange}
+                onSubmit={() => handleSubmit()}
                 sx={{ width: 1, mb: 1 }}
                 required
                 id="outlined-basic"
@@ -181,6 +182,7 @@ export default function RegisterCard({ client }) {
               <TextField
                 onFocus={handleFocus}
                 onChange={handleChange}
+                onSubmit={() => handleSubmit()}
                 sx={{ width: 1, mb: 1 }}
                 required
                 label="Password"
