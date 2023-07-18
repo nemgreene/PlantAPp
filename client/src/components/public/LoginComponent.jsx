@@ -137,6 +137,7 @@ export default function RegisterCard({ client }) {
     if (Object.keys(flaggedObj).length === 0) {
       setFlagged({});
       client.login(formValues);
+      setFormValues({});
     } else {
       setFlagged(flaggedObj);
     }
