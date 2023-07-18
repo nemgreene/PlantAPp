@@ -50,4 +50,8 @@ const normalizeOverview = (usersArr = [], plantsArr = []) => {
   return ret;
 };
 
-module.exports = normalizeOverview;
+// Enable for jest testing
+// module.exports = normalizeOverview;
+
+// Enable for deployment
+export default normalizeOverview;
