@@ -58,10 +58,13 @@ export default function Dashboard({ client, children }) {
           ml: appWidth,
           backgroundColor: "#afd1a3",
           height: `calc(${navHeight}vh - 1px)`,
+          maxHeight: `calc(${navHeight}vh - 1px)`,
           display: "flex",
           justifyContent: "center",
-          boxShadow: "none",
           outline: "solid 1px #2e7d32",
+          boxShadow: "none",
+          boxShadow:
+            "rgba(0, 0, 0, 0.3) 0px 3px 4px 1px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
         }}
       >
         <NavBar client={client} />
@@ -77,15 +80,13 @@ export default function Dashboard({ client, children }) {
       <Box
         component="main"
         sx={{
-          mt: `${navHeight}vh`,
-          p: 3,
+          pt: `calc(${navHeight}vh + 2.5vh)`,
+          pl: "2.5vh",
           minHeight: "95vh",
           flexGrow: 1,
           ml: appWidth,
           backgroundColor: "#afd1a3",
-
-          boxShadow:
-            "inset rgba(0, 0, 0, 0.3) 0px 3px 4px 1px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+          boxShadow: "inset 4px 0 4px -1px rgba(0,0,0,0.3)",
         }}
       >
         <SpeedDialComponent sortObj={sortObj} setSortFunc={setSortFunc} />

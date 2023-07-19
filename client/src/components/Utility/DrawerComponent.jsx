@@ -32,6 +32,7 @@ export default function DrawerComponent({
       }}
       variant="permanent"
       anchor="left"
+      style={{ backgroundColor: "red" }}
     >
       <List
         sx={{
