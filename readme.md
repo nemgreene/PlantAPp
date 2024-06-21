@@ -1,13 +1,25 @@
-1: After cloning in the root of the project run: "npm i"
+## Plant App Project
 
-2: Run: "npm run devInstall" to install the deps for the server and client
+MERN stack with CRUD capabilities 
+Mobile First UI/UX design powered my Material UI for themeing and components
 
-3: Mongoose Error, cant find .env variables
+Tech test developed for work to offer cohort members ongoing practice outside the scope of the course
 
-4: Make .env file INSIDE ./server, and add the ACCESS_TOKEN_SCRET, REFRECH_TOKEN_SECRET, and MONGODB
+Students can clone the broken version of the app from [here](https://github.com/InstructorGreene/PlantAppTechTestBroken) 
 
-5: After .env is added, the app should load, but unable to login
+This project includes a backlog of 16 issues ([here](https://github.com/InstructorGreene/PlantAppTechTestBroken/issues)), divided into 3 difficulties. The intention of this backlog was to offer a bugs across all of the core concepts covered in during the course. From simpler Basic css/lifecycle, React syntax, and Form Validation issues, to more involved additions to exisiting architecture improving and adding functionality to the app.
 
-6:Change var BaseUrl in ./client/src/apiClient to point at your server (http://localhost:5000)
+The final product with all 16 issues resolved can be found [here](https://github.com/InstructorGreene/PlantAppTechTestCompleted)
 
-7:Success
+#### Mongo, Express, React, Node.js
+
+Client: React-Router-Dom, React-Spring, MaterialUI, React-Toastify, Sass
+Server: Auth/Auth, Mongoose, Cors
+
+[Check it out on Render (~50 sec load time)](https://plant-app-pdok.onrender.com/)
+
+Login with Credentials with dummy data:
+email: root@root
+password: root
+
+Or register and use your own!
